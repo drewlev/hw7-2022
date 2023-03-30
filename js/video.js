@@ -24,11 +24,11 @@ document.querySelector("#mute").addEventListener("click", function() {
 	if (button.innerHTML === "Mute") {
 		button.innerHTML = "Unmute";
 		console.log("Unmute");
-		video.muted = false;
+		video.muted = true;
 	  } else {
 		button.innerHTML = "Mute";
 		console.log("Mute");
-		video.muted = true;
+		video.muted = false;
 	  }
 
 });
