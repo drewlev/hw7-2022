@@ -9,10 +9,14 @@ window.addEventListener("load", function() {
 
 document.querySelector("#play").addEventListener("click", function() {
 	video.play();
+	const volume = slider.value;
+	volumeSpan.textContent = volume + "%";
+	console.log("Play Video");
 });
 
 document.querySelector("#pause").addEventListener("click", function() {
 	video.pause();
+	console.log("Pause Video");
 });
 
 document.querySelector("#mute").addEventListener("click", function() {
@@ -23,29 +27,31 @@ document.querySelector("#mute").addEventListener("click", function() {
 document.querySelector("#slower").addEventListener("click", function() {
 	speed *= 0.9
 	video.playbackRate = speed;
-	console.log(speed)
+	console.log("Speed down video")
+	console.log("Speed is " + speed)
 });
 
 document.querySelector("#faster").addEventListener("click", function() {
 	speed *= 10/9
 	video.playbackRate = speed;
-	console.log(speed)
+	console.log("Speed up video")
+	console.log("Speed is " + speed)
 });
 
 document.querySelector("#skip").addEventListener("click", function() {
 	video.currentTime += 10;
-	console.log(video.currentTime);
+	console.log("Skip ahead")
+	console.log("Video current time is " + video.currentTime);
 });
 
 const slider = document.querySelector("#slider");
 const volumeSpan = document.getElementById('volume');
-const volume = slider.value;
-volumeSpan.textContent = volume;
+
 
 // Add an event listener to the slider that updates the volume span with the new value
 slider.addEventListener('input', () => {
   const volume = slider.value;
-  volumeSpan.textContent = volume;
+  volumeSpan.textContent = volume + "%";
 	console.log(volume);
   video.volume = parseFloat(volume/100);
 });
