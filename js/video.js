@@ -1,6 +1,5 @@
 var video = document.getElementById("player1");
 var speed = 1;
-var slider = document.getElementById("#slider");
 var volumeInfo = video.volume;
 
 window.addEventListener("load", function() {
@@ -38,9 +37,23 @@ document.querySelector("#skip").addEventListener("click", function() {
 	console.log(video.currentTime);
 });
 
-slider.addEventListener("#slider", function() {
-	var volume = parseFloat(slider.value);
-	video.volume = volume;
-	volumeInfo.innerHTML = Math.round(volume * 100) + "%";
+const slider = document.querySelector("#slider");
+const volumeSpan = document.getElementById('volume');
+const volume = slider.value;
+volumeSpan.textContent = volume;
+
+// Add an event listener to the slider that updates the volume span with the new value
+slider.addEventListener('input', () => {
+  const volume = slider.value;
+  volumeSpan.textContent = volume;
+	console.log(volume);
+  video.volume = parseFloat(volume/100);
 });
 
+document.querySelector("#vintage").addEventListener("click" ,function() {
+	video.classList.add("oldSchool");
+});
+
+document.querySelector("#orig").addEventListener("click" ,function() {
+	video.classList.remove("oldSchool");
+});
