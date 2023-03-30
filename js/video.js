@@ -20,7 +20,16 @@ document.querySelector("#pause").addEventListener("click", function() {
 });
 
 document.querySelector("#mute").addEventListener("click", function() {
-	video.muted = true;
+	var button = document.querySelector("#mute");
+	if (button.innerHTML === "Mute") {
+		button.innerHTML = "Unmute";
+		console.log("Unmute");
+		video.muted = false;
+	  } else {
+		button.innerHTML = "Mute";
+		console.log("Mute");
+		video.muted = true;
+	  }
 
 });
 
